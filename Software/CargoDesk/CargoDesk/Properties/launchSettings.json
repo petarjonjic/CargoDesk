@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CargoDesk (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CargoDesk (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
