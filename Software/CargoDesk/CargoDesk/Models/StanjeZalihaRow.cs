@@ -16,5 +16,6 @@ namespace CargoDesk.Models
         public string OznakaLokacije { get; set; }
 
         public decimal Kolicina { get; set; }
+        public int StanjeId { get; internal set; }
     }
 }

@@ -10,4 +10,3 @@ namespace CargoDesk.Models
         public string Naziv { get; set; } = "";
     }
 }
-}
