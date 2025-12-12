@@ -18,6 +18,13 @@ namespace CargoDesk.Data
             return new NpgsqlConnection(ConnectionString);
         }
 
+        public static async Task<NpgsqlConnection> OpenConnectionAsync()
+        {
+            var conn = GetConnection();
+            await conn.OpenAsync();
+            return conn;
+        }
+
         public static async Task TestKonekcijeAsync()
         {
             await using var conn = GetConnection();
