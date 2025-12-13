@@ -82,6 +82,11 @@ namespace CargoDesk.Repositories
             await cmd.ExecuteNonQueryAsync();
         }
 
+        public static Task InsertStavkaAsync(StavkePrimke s)
+        {
+            return InsertAsync(s);
+        }
+
         public static async Task UpdateAsync(StavkePrimke s)
         {
             await using var conn = Database.GetConnection();

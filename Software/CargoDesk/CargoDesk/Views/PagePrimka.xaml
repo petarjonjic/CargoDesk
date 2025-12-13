@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="CargoDesk.Views.PagePrimka"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CargoDesk.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="16" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Primka" FontSize="26" FontWeight="SemiBold"/>
+
+        <Grid Grid.Row="1" ColumnSpacing="12" RowSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Broj primke"/>
+                <TextBox x:Name="TxtBrojPrimke" PlaceholderText="npr. PR-2025-001"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="Datum"/>
+                <DatePicker x:Name="DpDatum"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <TextBlock Text="Dobavljač"/>
+                <ComboBox x:Name="CbDobavljac" DisplayMemberPath="Naziv" SelectedValuePath="Id"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <TextBlock Text="Skladište"/>
+                <ComboBox x:Name="CbSkladiste" DisplayMemberPath="Naziv" SelectedValuePath="Id" SelectionChanged="CbSkladiste_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="Zaposlenik"/>
+                <ComboBox x:Name="CbZaposlenik" DisplayMemberPath="Naziv" SelectedValuePath="Id"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="2">
+                <TextBlock Text="Broj narudžbenice dobavljača"/>
+                <TextBox x:Name="TxtNarudzbenicaDob" PlaceholderText="opcionalno"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0">
+                <TextBlock Text="Broj računa dobavljača"/>
+                <TextBox x:Name="TxtRacunDob" PlaceholderText="opcionalno"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                <TextBlock Text="Napomena"/>
+                <TextBox x:Name="TxtNapomena" AcceptsReturn="True" Height="70" TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Spacing="8">
+                <Button x:Name="BtnNovaPrimka" Content="Nova primka" Click="BtnNovaPrimka_Click"/>
+                <Button x:Name="BtnSpremiPrimku" Content="Spremi primku" Click="BtnSpremiPrimku_Click"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtStatusPrimka" Text="" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="2" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Stavke primke" FontSize="18" FontWeight="SemiBold"/>
+
+            <Grid Grid.Row="1" ColumnSpacing="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Proizvod"/>
+                    <ComboBox x:Name="CbProizvod" DisplayMemberPath="Naziv" SelectedValuePath="Id"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Lokacija"/>
+                    <ComboBox x:Name="CbLokacija" DisplayMemberPath="Naziv" SelectedValuePath="Id"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="Količina"/>
+                    <NumberBox x:Name="NbKolicina" Minimum="0" SpinButtonPlacementMode="Compact"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3">
+                    <TextBlock Text="Cijena"/>
+                    <NumberBox x:Name="NbCijena" Minimum="0" SpinButtonPlacementMode="Compact"/>
+                </StackPanel>
+
+                <Button Grid.Column="4" Content="Dodaj stavku" VerticalAlignment="Bottom" Click="BtnDodajStavku_Click"/>
+            </Grid>
+
+            <ListView Grid.Row="2" x:Name="LvStavke">
+                <ListView.Header>
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="RB" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="1" Text="Proizvod" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="2" Text="Lokacija" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="3" Text="Količina" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="4" Text="Cijena" FontWeight="SemiBold"/>
+                    </Grid>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding Rb}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ProizvodNaziv}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding LokacijaNaziv}"/>
+                            <TextBlock Grid.Column="3" Text="{Binding Kolicina}"/>
+                            <TextBlock Grid.Column="4" Text="{Binding Cijena}"/>
+
+                            <Button Grid.Column="5" Content="Ukloni" Tag="{Binding}" Click="BtnUkloniStavku_Click"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <TextBlock Grid.Row="3" x:Name="TxtStatusStavke" Text=""/>
+    </Grid>
+
+</Page>

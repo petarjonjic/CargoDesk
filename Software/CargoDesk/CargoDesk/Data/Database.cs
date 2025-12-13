@@ -11,7 +11,7 @@ namespace CargoDesk.Data
     public static class Database
     {
         private const string ConnectionString =
-            "Host=localhost;Port=5433;Database=skladiste-projekt;Username=postgres;Password=jonkee101;";
+            "Host=localhost;Port=5433;Database=skladiste-projekt;Username=postgres;Password=jonkee101;Include Error Detail=true;Search Path=skladiste_projekt";
 
         public static NpgsqlConnection GetConnection()
         {
@@ -27,9 +27,7 @@ namespace CargoDesk.Data
 
         public static async Task TestKonekcijeAsync()
         {
-            await using var conn = GetConnection();
-            await conn.OpenAsync();
-
+            await using var conn = await OpenConnectionAsync();
         }
 
     }
