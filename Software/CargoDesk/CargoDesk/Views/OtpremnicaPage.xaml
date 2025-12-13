@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <Page
     x:Class="CargoDesk.Views.OtpremnicaPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,7 +9,46 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <ScrollViewer>
+        <StackPanel Spacing="12" Padding="20">
 
-    </Grid>
+            <TextBlock Text="Otpremnica" FontSize="28" FontWeight="Bold"/>
+
+            <!-- ZAGLAVLJE OTPREMNICE -->
+            <TextBox x:Name="TxtBrojOtpremnice" Header="Broj otpremnice"/>
+            <DatePicker x:Name="DpDatum" Header="Datum"/>
+
+            <ComboBox x:Name="CbKupac" Header="Kupac"/>
+            <ComboBox x:Name="CbSkladiste" Header="Skladište"/>
+            <ComboBox x:Name="CbZaposlenik" Header="Zaposlenik"/>
+
+            <TextBox x:Name="TxtBrojNarudzbenice" Header="Broj narudžbenice kupca"/>
+            <TextBox x:Name="TxtBrojRacuna" Header="Broj računa kupca"/>
+            <TextBox x:Name="TxtNapomena" Header="Napomena" AcceptsReturn="True"/>
+
+            <Button Content="Spremi otpremnicu"
+                    Click="BtnSpremiOtpremnicu_Click"/>
+
+            <TextBlock x:Name="TxtStatusOtpremnice"
+                       Foreground="LightGreen"
+                       Margin="0,5,0,15"/>
+
+            <!-- STAVKE OTPREMNICE -->
+            <TextBlock Text="Stavke otpremnice" FontSize="20" FontWeight="SemiBold"/>
+
+            <ComboBox x:Name="CbProizvod" Header="Proizvod"/>
+            <ComboBox x:Name="CbLokacija" Header="Lokacija"/>
+
+            <NumberBox x:Name="NbKolicina" Header="Količina" SpinButtonPlacementMode="Inline"/>
+            <NumberBox x:Name="NbCijena" Header="Cijena" SpinButtonPlacementMode="Inline"/>
+
+            <Button Content="Dodaj stavku"
+                    Click="BtnDodajStavku_Click"/>
+
+            <TextBlock x:Name="TxtStatusStavke"
+                       Foreground="OrangeRed"
+                       Margin="0,5,0,0"/>
+
+        </StackPanel>
+    </ScrollViewer>
 </Page>

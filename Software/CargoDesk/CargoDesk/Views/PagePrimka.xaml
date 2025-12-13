@@ -157,7 +157,7 @@
                             <TextBlock Grid.Column="3" Text="{Binding Kolicina}"/>
                             <TextBlock Grid.Column="4" Text="{Binding Cijena}"/>
 
-                            <Button Grid.Column="5" Content="Ukloni" Tag="{Binding}" Click="BtnUkloniStavku_Click"/>
+                      
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

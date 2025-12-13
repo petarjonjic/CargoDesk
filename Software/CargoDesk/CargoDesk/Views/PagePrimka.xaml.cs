@@ -213,17 +213,6 @@ public sealed partial class PagePrimka : Page
     }
 
 
-    private void BtnUkloniStavku_Click(object sender, RoutedEventArgs e)
-    {
-        // Za projekt ti je dovoljno da u sučelju demonstriraš INSERT + trigger.
-        // DELETE stavke kasnije možeš dodati ako želiš (onda treba trigger/pravilo što s zalihom).
-        if ((sender as Button)?.Tag is StavkaPrimkeView item)
-        {
-            _stavke.Remove(item);
-            TxtStatusStavke.Text = "Uklonjeno iz prikaza (nije brisano iz baze).";
-        }
-    }
-
     public class StavkaPrimkeView
     {
         public int Rb { get; set; }

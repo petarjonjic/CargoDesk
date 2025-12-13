@@ -13,7 +13,25 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid>
-        <Frame x:Name="MainFrame"/>
+    <Grid RowDefinitions="Auto,*">
+
+        <StackPanel
+            Orientation="Horizontal"
+            Spacing="12"
+            Padding="12">
+
+            <Button
+                Content="Primka"
+                Click="BtnPrimka_Click"/>
+
+            <Button
+                Content="Otpremnica"
+                Click="BtnOtpremnica_Click"/>
+        </StackPanel>
+
+
+        <Frame
+            x:Name="MainFrame"
+            Grid.Row="1"/>
     </Grid>
 </Window>

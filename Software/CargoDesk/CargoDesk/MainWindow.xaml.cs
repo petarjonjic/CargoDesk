@@ -27,29 +27,45 @@ namespace CargoDesk
     {
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
+            // Otvori aplikaciju na formi Primka
             MainFrame.Navigate(typeof(Views.PagePrimka));
 
+            // Test konekcije na bazu – samo jednom nakon aktivacije
             this.Activated += MainWindow_Activated;
         }
 
         private async void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
         {
-
+            // Skidamo event da se ne izvršava više puta
             this.Activated -= MainWindow_Activated;
 
             try
             {
                 await Database.TestKonekcijeAsync();
                 System.Diagnostics.Debug.WriteLine("Database connection successful.");
-
- 
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Database connection error: " + ex.Message);
             }
+        }
+
+        // =========================
+        // NAVIGACIJA – PRIMKA
+        // =========================
+        private void BtnPrimka_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Views.PagePrimka));
+        }
+
+        // =========================
+        // NAVIGACIJA – OTPREMNICA
+        // =========================
+        private void BtnOtpremnica_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Views.OtpremnicaPage));
         }
     }
 }

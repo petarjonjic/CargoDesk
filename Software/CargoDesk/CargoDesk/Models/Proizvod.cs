@@ -11,7 +11,7 @@ namespace CargoDesk.Models
         public string NazivProizvoda { get; set; }
         public string Sifra { get; set; }
 
-        public bool StatusProizvoda { get; set; }
+        public string StatusProizvoda { get; set; }
 
         public string Napomena { get; set; }
 
